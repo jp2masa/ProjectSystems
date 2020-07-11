@@ -1,0 +1,49 @@
+﻿<Project>
+
+    <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
+    <Import Project="$(BaseIntermediateOutputPath)$(_TargetAssemblyProjectName)$(MSBuildProjectExtension).*.props" Condition="'$(_TargetAssemblyProjectName)' != ''" />
+
+    <PropertyGroup>
+        <TargetFramework>net471</TargetFramework>
+        <RootNamespace>Bootable.ProjectSystem</RootNamespace>
+        <IncludeWpfReferences>True</IncludeWpfReferences>
+        <NoWarn>CA1812;(NoWarn)</NoWarn>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Content Include="BootableImages.imagemanifest" IncludeInVSIX="True" />
+        <Page Include="ProjectSystem\**\*.xaml" SubType="Designer" Generator="MSBuild:Compile" />
+        <Compile Update="ProjectSystem\**\*.xaml.cs" SubType="Code" DependentUpon="%(Filename)" />
+        <Resource Include="Resources\**" />
+        <VSCTCompile Include="Menus.vsct" ResourceName="Menus.ctmenu" SubType="Designer" />
+        <EmbeddedResource Update="VSPackage.resx" MergeWithCTO="True" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="BuildSystem\**" IncludeInVSIX="True" InstallRoot="MSBuild" VSIXSubPath="Bootable\%(RecursiveDir)" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <XamlPropertyRule Include="BuildSystem\Rules\BootableConfiguration.xaml" />
+        <XamlPropertyRule Include="BuildSystem\Rules\Content.xaml" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Reference Include="System.Management" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Extended.Wpf.Toolkit" Version="3.4.0" />
+        <PackageReference Include="Microsoft.Build.Engine" Version="15.8.166" />
+        <PackageReference Include="Microsoft.VisualStudio.Imaging.Interop.14.0.DesignTime" Version="14.3.26930" />
+        <PackageReference Include="Microsoft.VisualStudio.ProjectSystem.Analyzers" />
+        <PackageReference Include="Microsoft.VisualStudio.ProjectSystem.Managed.VS" />
+        <PackageReference Include="Microsoft.VisualStudio.ProjectSystem.Sdk" Version="15.8.235" />
+        <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="15.7.27703" />
+        <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" />
+    </ItemGroup>
+
+    <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
+    <Import Project="$(BaseIntermediateOutputPath)$(_TargetAssemblyProjectName)$(MSBuildProjectExtension).*.targets" Condition="'$(_TargetAssemblyProjectName)' != ''" />
+
+</Project>

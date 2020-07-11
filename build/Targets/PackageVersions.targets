@@ -1,0 +1,25 @@
+<Project>
+
+    <PropertyGroup>
+        <MicrosoftVisualStudioProjectSystemVersion>15.8.235</MicrosoftVisualStudioProjectSystemVersion>
+        <MicrosoftVisualStudioProjectSystemManagedVersion>2.8.0-beta2-63204-0001</MicrosoftVisualStudioProjectSystemManagedVersion>
+        <MicrosoftVisualStudioThreadingAnalyzersVersion>15.8.132</MicrosoftVisualStudioThreadingAnalyzersVersion>
+        <MicrosoftVisualStudioSDKEmbedInteropTypesVersion>15.0.21</MicrosoftVisualStudioSDKEmbedInteropTypesVersion>
+        <MicrosoftVSSDKBuildToolsVersion>15.8.3247</MicrosoftVSSDKBuildToolsVersion>
+        <RoslynAnalyzersVersion>2.6.2-beta2</RoslynAnalyzersVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Update="Microsoft.VisualStudio.ProjectSystem.Managed" Version="$(MicrosoftVisualStudioProjectSystemManagedVersion)" />
+        <PackageReference Update="Microsoft.VisualStudio.ProjectSystem.Managed.VS" Version="$(MicrosoftVisualStudioProjectSystemManagedVersion)" />
+        <PackageReference Update="Microsoft.VisualStudio.SDK.EmbedInteropTypes" Version="$(MicrosoftVisualStudioSDKEmbedInteropTypesVersion)" />
+        <PackageReference Update="Microsoft.VSSDK.BuildTools" Version="$(MicrosoftVSSDKBuildToolsVersion)" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Update="Microsoft.VisualStudio.ProjectSystem.Analyzers" Version="$(MicrosoftVisualStudioProjectSystemVersion)" />
+        <PackageReference Update="Microsoft.VisualStudio.Threading.Analyzers" Version="$(MicrosoftVisualStudioThreadingAnalyzersVersion)" />
+        <PackageReference Update="@(RoslynAnalyzer)" Version="$(RoslynAnalyzersVersion)" />
+    </ItemGroup>
+
+</Project>

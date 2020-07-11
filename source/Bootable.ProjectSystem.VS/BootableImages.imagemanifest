@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ImageManifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns="http://schemas.microsoft.com/VisualStudio/ImageManifestSchema/2014">
+
+    <Symbols>
+        <String Name="Resources" Value="/Bootable.ProjectSystem.VS;Component/Resources" />
+        <Guid Name="BootableImagesGuid" Value="4792d34f-c4d6-431b-9edb-54937e343990" />
+        <ID Name="IsoPublishProviderIcon" Value="0" />
+        <ID Name="UsbPublishProviderIcon" Value="1" />
+    </Symbols>
+
+    <Images>
+        <Image Guid="$(BootableImagesGuid)" ID="$(IsoPublishProviderIcon)">
+            <!--<Source Uri="$(Resources)/ISO.xaml" />-->
+            <Source Uri="$(Resources)/ISO.png" />
+        </Image>
+        <Image Guid="$(BootableImagesGuid)" ID="$(UsbPublishProviderIcon)">
+            <!--<Source Uri="$(Resources)/USB.xaml" />-->
+            <Source Uri="$(Resources)/USB.png" />
+        </Image>
+    </Images>
+
+</ImageManifest>

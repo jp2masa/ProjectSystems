@@ -1,0 +1,12 @@
+<Project>
+
+    <PropertyGroup>
+        <IsVsixProject Condition="'$(IsVsixProject)' == '' AND $(MSBuildProjectName.EndsWith('.VS'))">True</IsVsixProject>
+    </PropertyGroup>
+
+    <Import Project="Workarounds.props" />
+
+    <Import Project="RestoreSources.props" />
+    <Import Project="RepoLayout.props" />
+
+</Project>

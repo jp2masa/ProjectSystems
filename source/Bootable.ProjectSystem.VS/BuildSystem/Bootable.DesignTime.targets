@@ -1,0 +1,20 @@
+﻿<Project>
+
+    <PropertyGroup>
+        <_BootableXamlResourcesDirectory>$(MSBuildThisFileDirectory)</_BootableXamlResourcesDirectory>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectCapability Include="Bootable" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PropertyPageSchema Include="$(_BootableXamlResourcesDirectory)Rules\BootableConfiguration.xaml">
+            <Context>ProjectSubscriptionService</Context>
+        </PropertyPageSchema>
+        <PropertyPageSchema Include="$(_CosmosXamlResourcesDirectory)Rules\Content.xaml">
+            <Context>File;BrowseObject</Context>
+        </PropertyPageSchema>
+    </ItemGroup>
+
+</Project>

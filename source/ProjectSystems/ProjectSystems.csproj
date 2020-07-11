@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net471</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Cosmos.ProjectSystem.VS\Cosmos.ProjectSystem.VS.csproj" />
+        <ProjectReference Include="..\XSharp.ProjectSystem.VS\XSharp.ProjectSystem.VS.csproj" />
+    </ItemGroup>
+
+</Project>

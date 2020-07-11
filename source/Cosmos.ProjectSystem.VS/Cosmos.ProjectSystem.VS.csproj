@@ -1,0 +1,66 @@
+﻿<Project>
+
+    <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
+    <Import Project="$(BaseIntermediateOutputPath)*.nuget.g.props" Condition="$(MSBuildProjectName.EndsWith('wpftmp'))" />
+
+    <PropertyGroup>
+        <TargetFramework>net471</TargetFramework>
+        <RootNamespace>Cosmos.ProjectSystem</RootNamespace>
+        <IncludeWpfReferences>True</IncludeWpfReferences>
+        <IncludeWindowsFormsReferences>True</IncludeWindowsFormsReferences>
+    </PropertyGroup>
+
+    <!--<PropertyGroup>
+        <ExtensionInstallationRoot>Extensions</ExtensionInstallationRoot>
+        <ExtensionInstallationFolder>Cosmos\ProjectSystem\</ExtensionInstallationFolder>
+    </PropertyGroup>-->
+
+    <ItemGroup>
+        <Compile Remove="ProjectTemplates\**" />
+        <Content Include="ProjectTemplates\**" IncludeInVSIX="True" />
+        <Content Include="Resources\Icon.png" IncludeInVSIX="True" />
+        <Content Include="CosmosImages.imagemanifest" IncludeInVSIX="True" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Resource Include="Resources\CosmosProjectRootIcon.png" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="BuildSystem\**" IncludeInVSIX="True" InstallRoot="MSBuild" VSIXSubPath="Cosmos\%(RecursiveDir)" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Page Include="ProjectSystem\VS\PropertyPages\**\*.xaml" SubType="Designer" Generator="MSBuild:Compile" />
+        <Compile Update="ProjectSystem\VS\PropertyPages\**\*.xaml.cs" DependentUpon="%(Filename)" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.VisualStudio.ImageCatalog" Version="15.7.27703" />
+        <PackageReference Include="Microsoft.VisualStudio.Imaging.Interop.14.0.DesignTime" Version="14.3.26930" />
+        <PackageReference Include="Microsoft.VisualStudio.ProjectSystem.Analyzers" />
+        <PackageReference Include="Microsoft.VisualStudio.ProjectSystem.Sdk" Version="15.8.235" />
+        <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="15.7.27703" />
+        <PackageReference Include="Microsoft.VisualStudio.Shell.Framework" Version="15.7.27703" />
+        <PackageReference Include="Microsoft.VisualStudio.Shell.Interop.11.0" Version="11.0.61031" />
+        <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Bootable.ProjectSystem.VS\Bootable.ProjectSystem.VS.csproj">
+            <Name>Bootable.ProjectSystem.VS</Name>
+            <IncludeOutputGroupsInVSIX>VSIXContainerProjectOutputGroup</IncludeOutputGroupsInVSIX>
+        </ProjectReference>
+        <ProjectReference Include="..\VSPropertyPages\VSPropertyPages.csproj" />
+    </ItemGroup>
+
+    <Target Name="IncludeMissingAssemblies" AfterTargets="GetVsixSourceItems" BeforeTargets="RemoveVSSDKAssemblies">
+        <ItemGroup>
+            <VSIXSourceItem Include="@(ReferenceCopyLocalPaths)" Condition="'%(Filename)' == 'Microsoft.Win32.Registry'" />
+        </ItemGroup>
+    </Target>
+
+    <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
+    <Import Project="$(BaseIntermediateOutputPath)*.nuget.g.targets" Condition="$(MSBuildProjectName.EndsWith('wpftmp'))" />
+
+</Project>

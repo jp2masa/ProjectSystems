@@ -1,0 +1,14 @@
+<Project>
+
+    <Import Project="References.targets" />
+
+    <Import Project="StrongName.targets" />
+
+    <Import Project="Tests.targets" Condition="'$(IsTestProject)' == 'True'" />
+    <Import Project="VSIX.targets" Condition="'$(IsVsixProject)' == 'True'" />
+
+    <Import Project="Workarounds.targets" />
+
+    <Import Project="PackageVersions.targets" />
+
+</Project>

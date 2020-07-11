@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="Bootable.ProjectSystem.VS.Build.UsbPublishSettingsControl"
+             x:ClassModifier="internal"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Bootable.ProjectSystem.VS.Build"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=local:UsbPublishSettingsViewModel}">
+
+    <StackPanel Margin="8">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <DockPanel>
+                <Label>Drive:</Label>
+
+                <ComboBox Grid.Column="0"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Center"
+                          MinWidth="96"
+                          Margin="4, 0"
+                          ItemsSource="{Binding Drives, Mode=OneWay}"
+                          SelectedItem="{Binding SelectedDrive}"
+                          DisplayMemberPath="VolumeLabel" />
+            </DockPanel>
+
+            <CheckBox Grid.Column="1"
+                      Margin="8,0"
+                      VerticalAlignment="Center"
+                      IsEnabled="False"
+                      IsChecked="{Binding FormatUsbDrive}"
+                      Content="Format USB Drive (not implemented)" />
+
+        </Grid>
+    </StackPanel>
+
+</UserControl>

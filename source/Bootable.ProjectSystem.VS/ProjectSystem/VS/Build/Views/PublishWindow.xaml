@@ -1,0 +1,143 @@
+﻿<platformUI:DialogWindow x:Name="PublishDialog"
+                         x:Class="Bootable.ProjectSystem.VS.Build.PublishWindow"
+                         x:ClassModifier="internal"
+                         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                         xmlns:local="clr-namespace:Bootable.ProjectSystem.VS.Build"
+                         xmlns:imaging="clr-namespace:Microsoft.VisualStudio.Imaging;assembly=Microsoft.VisualStudio.Imaging"
+                         xmlns:platformUI="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.15.0"
+                         mc:Ignorable="d"
+                         d:DataContext="{d:DesignInstance Type=local:PublishWindowViewModel}"
+                         HasMinimizeButton="False"
+                         HasMaximizeButton="False"
+                         ResizeMode="NoResize"
+                         ShowInTaskbar="False"
+                         Title="Publish"
+                         WindowStartupLocation="CenterOwner">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.Resources>
+                <Style TargetType="TabControl">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TabControl">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="2*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                                                  VerticalScrollBarVisibility="Disabled">
+                                        <UniformGrid Grid.Row="0"
+                                                     Rows="1"
+                                                     HorizontalAlignment="Center"
+                                                     VerticalAlignment="Stretch"
+                                                     Margin="8"
+                                                     IsItemsHost="True" />
+                                    </ScrollViewer>
+
+                                    <Border BorderThickness="0,1"
+                                            BorderBrush="#D0CEBF"
+                                            Grid.Row="1">
+                                        <Border BorderThickness="{TemplateBinding BorderThickness}" 
+                                                BorderBrush="{TemplateBinding BorderBrush}">
+                                            <Border Background="{TemplateBinding Background}">
+                                                <ContentPresenter Margin="8"
+                                                                  ContentSource="SelectedContent" />
+                                            </Border>
+                                        </Border>
+                                    </Border>
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+                <Style TargetType="TabItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TabItem">
+                                <RadioButton HorizontalContentAlignment="Stretch"
+                                             VerticalContentAlignment="Stretch"
+                                             Margin="4"
+                                             Padding="4"
+                                             Style="{StaticResource {x:Type ToggleButton}}"
+                                             IsChecked="{Binding IsSelected, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
+                                    <ContentPresenter x:Name="ContentSite"
+                                                      VerticalAlignment="Stretch"
+                                                      HorizontalAlignment="Stretch"
+                                                      ContentSource="Header">
+                                    </ContentPresenter>
+                                </RadioButton>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Grid.Resources>
+
+            <TabControl ItemsSource="{Binding PublishProviders}"
+                        SelectedItem="{Binding ActiveProvider}">
+                <TabControl.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel>
+                            <TextBlock DockPanel.Dock="Bottom"
+                                       Padding="4"
+                                       TextAlignment="Center"
+                                       Text="{Binding Name}" />
+                            <ContentControl Margin="8"
+                                            Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}">
+                                <imaging:CrispImage Height="{Binding ActualHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContentControl}}"
+                                                    Width="{Binding ActualWidth, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContentControl}}"
+                                                    Moniker="{Binding Icon}" />
+                            </ContentControl>
+                        </DockPanel>
+                    </DataTemplate>
+                </TabControl.ItemTemplate>
+                <TabControl.ContentTemplate>
+                    <DataTemplate>
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                                      VerticalScrollBarVisibility="Auto">
+                            <ContentPresenter Content="{Binding SettingsControl}" />
+                        </ScrollViewer>
+                    </DataTemplate>
+                </TabControl.ContentTemplate>
+            </TabControl>
+
+        </Grid>
+
+        <Grid Grid.Row="1"
+              Margin="8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="8" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.Resources>
+                <Style TargetType="platformUI:DialogButton">
+                    <Setter Property="Margin" Value="0" />
+                </Style>
+            </Grid.Resources>
+
+            <platformUI:DialogButton Grid.Column="1"
+                                     Command="{Binding OkCommand}"
+                                     CommandParameter="{Binding ElementName=PublishDialog}"
+                                     Content="OK" />
+            <platformUI:DialogButton Grid.Column="3"
+                                     Command="{Binding CancelCommand}"
+                                     CommandParameter="{Binding ElementName=PublishDialog}"
+                                     Content="Cancel" />
+
+        </Grid>
+
+    </Grid>
+
+</platformUI:DialogWindow>

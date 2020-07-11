@@ -1,0 +1,14 @@
+{
+    "profiles": {
+        "ProjectSystems": {
+            "commandName": "Executable",
+            "executablePath": "$(DevEnvDir)devenv.exe",
+            "commandLineArgs": "/rootSuffix Exp",
+            "environmentVariables": {
+                "BootableDesignTimeTargetsPath": "$(MSBuildProjectDirectory)\\..\\Bootable.ProjectSystem.VS\\BuildSystem\\Bootable.DesignTime.targets",
+                "CosmosDesignTimeTargetsPath": "$(MSBuildProjectDirectory)\\..\\Cosmos.ProjectSystem.VS\\BuildSystem\\Cosmos.DesignTime.targets",
+                "XSharpDesignTimeTargetsPath": "$(MSBuildProjectDirectory)\\..\\XSharp.ProjectSystem.VS\\BuildSystem\\XSharp.DesignTime.targets"
+            }
+        }
+    }
+}

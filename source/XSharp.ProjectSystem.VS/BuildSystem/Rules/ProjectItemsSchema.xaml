@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProjectSchemaDefinitions xmlns="http://schemas.microsoft.com/build/2009/properties">
+
+    <ItemType Name="Compile"
+              DisplayName="X# Compile"/>
+
+    <ContentType Name="XSharpFile"
+                 DisplayName="X# file"
+                 ItemType="Compile" />
+
+    <FileExtension Name=".xs"
+                   ContentType="XSharpFile"/>
+    
+</ProjectSchemaDefinitions>

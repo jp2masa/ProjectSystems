@@ -1,0 +1,10 @@
+<Project>
+
+    <Import Project="$(BaseIntermediateOutputPath)$(_TargetAssemblyProjectName)$(MSBuildProjectExtension).*.props" Condition="'$(_TargetAssemblyProjectName)' != ''" />
+
+    <PropertyGroup Condition="$(MSBuildProjectName.EndsWith('wpftmp'))">
+        <LanguageTargets>$(MSBuildToolsPath)\Microsoft.CSharp.targets</LanguageTargets>
+    </PropertyGroup>
+
+</Project>
+

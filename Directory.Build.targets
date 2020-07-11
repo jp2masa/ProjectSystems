@@ -1,0 +1,19 @@
+<Project>
+
+    <ItemGroup>
+        <RoslynAnalyzer Include="Microsoft.CodeAnalysis.Analyzers" />
+        <RoslynAnalyzer Include="Microsoft.CodeAnalysis.FxCopAnalyzers" />
+        <RoslynAnalyzer Include="Microsoft.CodeQuality.Analyzers" />
+        <RoslynAnalyzer Include="Microsoft.NetCore.Analyzers" />
+        <RoslynAnalyzer Include="Microsoft.NetFramework.Analyzers" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="@(RoslynAnalyzer)" PrivateAssets="All" />
+        <PackageReference Update="Microsoft.VisualStudio.ProjectSystem.Analyzers" PrivateAssets="All" />
+        <PackageReference Update="Microsoft.VisualStudio.Threading.Analyzers" PrivateAssets="All" />
+    </ItemGroup>
+
+    <Import Project="build\Targets\Import.targets" />
+
+</Project>

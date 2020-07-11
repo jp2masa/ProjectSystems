@@ -1,0 +1,42 @@
+{
+    "profiles": {
+        "$projectname$": {
+            "commandName": "Bootable",
+            "debugMode": "PipeServer",
+            "host": "Bochs"
+        },
+        "Bochs": {
+            "commandName": "Bootable",
+            "debugMode": "PipeServer",
+            "host": "Bochs",
+            "hostSettings": {
+                "EnableGDB": false,
+                "StartCosmosGDB": false,
+                "VisualStudioDebugPort": "Pipe: Cosmos\\Serial",
+                "CosmosDebugPort": "Serial: COM1"
+            }
+        },
+        "Hyper-V": {
+            "commandName": "Bootable",
+            "debugMode": "PipeClient",
+            "host": "Hyper-V",
+            "hostSettings": {
+                "EnableGDB": false,
+                "StartCosmosGDB": false,
+                "VisualStudioDebugPort": "Pipe: Cosmos\\Serial",
+                "CosmosDebugPort": "Serial: COM1"
+            }
+        },
+        "VMware": {
+            "commandName": "Bootable",
+            "debugMode": "PipeServer",
+            "host": "VMware",
+            "hostSettings": {
+                "EnableGDB": false,
+                "StartCosmosGDB": false,
+                "VisualStudioDebugPort": "Pipe: Cosmos\\Serial",
+                "CosmosDebugPort": "Serial: COM1"
+            }
+        }
+    }
+}

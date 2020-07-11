@@ -1,0 +1,12 @@
+{
+    "profiles": {
+        "Bootable.ProjectSystem": {
+            "commandName": "Executable",
+            "executablePath": "$(DevEnvDir)devenv.exe",
+            "commandLineArgs": "/rootSuffix Exp",
+            "environmentVariables": {
+                "BootableDesignTimeTargetsPath": "$(MSBuildProjectDirectory)\\BuildSystem\\Bootable.DesignTime.targets"
+            }
+        }
+    }
+}

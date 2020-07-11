@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net471</TargetFramework>
+        <PackageDescription>Property pages implementation for Visual Studio CPS-based project systems.</PackageDescription>
+        <PackageTags>VS Visual Studio Property Pages CPS WPF Windows Forms WinForms X# XSharp Cosmos</PackageTags>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Reference Include="PresentationCore" />
+        <Reference Include="PresentationFramework" />
+        <Reference Include="System.Windows.Forms" />
+        <Reference Include="WindowsBase" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="EnvDTE" Version="8.0.2" />
+        <PackageReference Include="Microsoft.Build" Version="15.3.409" />
+        <PackageReference Include="Microsoft.VisualStudio.ManagedInterfaces" Version="8.0.50728" />
+        <PackageReference Include="Microsoft.VisualStudio.OLE.Interop" Version="7.10.6071" />
+        <PackageReference Include="Microsoft.VisualStudio.ProjectSystem" Version="15.3.224" />
+        <PackageReference Include="Microsoft.VisualStudio.ProjectSystem.Analyzers" />
+        <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="15.0.26606" />
+        <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" />
+    </ItemGroup>
+
+</Project>

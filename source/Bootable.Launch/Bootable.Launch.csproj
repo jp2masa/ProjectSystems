@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>netcoreapp2.0;net471</TargetFrameworks>
+        <PackageDescription>Bootable launch hosts.</PackageDescription>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+            <_Parameter1>Bootable.Launch.Tests</_Parameter1>
+        </AssemblyAttribute>
+        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+            <_Parameter1>Bootable.ProjectSystem.VS.Tests</_Parameter1>
+        </AssemblyAttribute>
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Include="Hosts\Bochs\Bochs.bxrc" />
+        <EmbeddedResource Include="Hosts\VMware\VMware.nvram" />
+        <EmbeddedResource Include="Hosts\VMware\VMware.vmx" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="DiscUtils.Containers" Version="0.13.0-alpha" />
+        <PackageReference Include="DiscUtils.FileSystems" Version="0.13.0-alpha" />
+        <PackageReference Include="Microsoft.Win32.Registry" Version="4.5.0" Condition="'$(TargetFramework)' == 'netcoreapp2.0'" />
+        <PackageReference Include="System.IO.Ports" Version="4.5.0" />
+    </ItemGroup>
+
+</Project>

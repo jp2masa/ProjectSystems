@@ -1,0 +1,17 @@
+﻿<Project>
+
+    <PropertyGroup>
+        <BootableDesignTimeTargets Condition="'$(BootableDesignTimeTargets)' == ''">$(MSBuildThisFileDirectory)..\Bootable\Bootable.DesignTime.targets</BootableDesignTimeTargets>
+    </PropertyGroup>
+
+    <Import Project="$(BootableDesignTimeTargets)" Condition="Exists('$(BootableDesignTimeTargets)')" />
+
+    <PropertyGroup>
+        <_CosmosXamlResourcesDirectory>$(MSBuildThisFileDirectory)</_CosmosXamlResourcesDirectory>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectCapability Include="Cosmos" />
+    </ItemGroup>
+
+</Project>
